@@ -1,5 +1,8 @@
 # Cap'n Proto Language Server
 
+> **Docs:** [ZAP Language Server](https://zap-proto.dev/docs/sdks) · part of the [ZAP Protocol](https://zap-proto.io)
+
+
 A language server that provides IDE features for Cap'n Proto schema files, including go-to-definition and automatic recompilation.
 
 ## Building from Source
