@@ -77,7 +77,7 @@ export async function activate(context: ExtensionContext) {
 		const candidatePaths: string[] = [];
 		
 		const extensionPath = context.extensionPath;
-		const binaryName = process.platform === 'win32' ? 'capnp-ls.exe' : 'capnp-ls';
+		const binaryName = process.platform === 'win32' ? 'zap-ls.exe' : 'zap-ls';
 		const extensionBinaryPath = path.join(extensionPath, binaryName);
 		
 		candidatePaths.push(extensionBinaryPath);
@@ -109,23 +109,23 @@ export async function activate(context: ExtensionContext) {
 		if (isLinuxX86_64 && !fs.existsSync(extensionBinaryPath)) {
 			log(`Binary not found at ${extensionBinaryPath} and we're on Linux x86_64, attempting to download...`);
 			try {
-				await downloadCapnpLs(extensionBinaryPath, version);
-				log(`Successfully downloaded capnp-ls version ${version} to ${extensionBinaryPath}`);
+				await downloadZapLs(extensionBinaryPath, version);
+				log(`Successfully downloaded zap-ls version ${version} to ${extensionBinaryPath}`);
 				return extensionBinaryPath;
 			} catch (err) {
-				log(`Failed to download capnp-ls: ${err.message}`);
+				log(`Failed to download zap-ls: ${err.message}`);
 				// Continue with normal search path if download fails
 			}
 		}
 		
-		log('Could not find capnp-ls, falling back to "capnp-ls" command');
-		window.showWarningMessage('Could not find capnp-ls executable. Make sure it is installed and in your PATH.');
-		return 'capnp-ls';
+		log('Could not find zap-ls, falling back to "zap-ls" command');
+		window.showWarningMessage('Could not find zap-ls executable. Make sure it is installed and in your PATH.');
+		return 'zap-ls';
 	}
 
-	function downloadCapnpLs(targetPath: string, version: string): Promise<void> {
-		const url = `https://github.com/trickstar0301/capnp-ls/releases/download/${version}/capnp-ls-linux-x86_64`;
-		log(`Downloading capnp-ls version ${version} from ${url} to ${targetPath}`);
+	function downloadZapLs(targetPath: string, version: string): Promise<void> {
+		const url = `https://github.com/zap-proto/lsp/releases/download/${version}/zap-ls-linux-x86_64`;
+		log(`Downloading zap-ls version ${version} from ${url} to ${targetPath}`);
 		
 		return new Promise((resolve, reject) => {
 			// ファイルのオープンを遅延させる
