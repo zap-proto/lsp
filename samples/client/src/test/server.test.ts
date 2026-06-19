@@ -23,7 +23,7 @@ suite('Cap\'n Proto Language Server Test Suite', () => {
 
         await new Promise(resolve => setTimeout(resolve, 1000));
 
-        const config = vscode.workspace.getConfiguration('capnp-ls-client');
+        const config = vscode.workspace.getConfiguration('zap-ls-client');
         console.log('Configuration:', {
             serverPath: config.get('languageServer.path'),
             compilerPath: config.get('compiler.path'),
@@ -40,21 +40,21 @@ suite('Cap\'n Proto Language Server Test Suite', () => {
         const workspaceFolder = vscode.workspace.workspaceFolders![0];
         console.log('Workspace folder:', workspaceFolder?.uri.fsPath);
         
-        const uri = vscode.Uri.file(path.join(workspaceFolder.uri.fsPath, 'schemas/company.capnp'));
+        const uri = vscode.Uri.file(path.join(workspaceFolder.uri.fsPath, 'schemas/company.zap'));
         console.log('Document URI:', uri.fsPath);
         
         document = await vscode.workspace.openTextDocument(uri);
         console.log('Document opened:', document.uri.fsPath);
         
         await vscode.window.showTextDocument(document);
-        assert.strictEqual(document.languageId, 'capnp');
+        assert.strictEqual(document.languageId, 'zap');
     });
 
     test('Definition Provider', async () => {
         console.log('Starting Definition Provider test');
 
         const workspaceFolder = vscode.workspace.workspaceFolders![0];
-        const uri = vscode.Uri.file(path.join(workspaceFolder.uri.fsPath, 'schemas/company.capnp'));
+        const uri = vscode.Uri.file(path.join(workspaceFolder.uri.fsPath, 'schemas/company.zap'));
         document = await vscode.workspace.openTextDocument(uri);
         await vscode.window.showTextDocument(document);
         console.log('Document opened:', document.uri.fsPath);
@@ -74,7 +74,7 @@ suite('Cap\'n Proto Language Server Test Suite', () => {
 
         console.log('Definitions found:', definitions?.length);
         assert.ok(definitions?.length > 0, 'No definitions found');
-        assert.strictEqual(path.basename(definitions[0].uri.fsPath), 'company.capnp');
+        assert.strictEqual(path.basename(definitions[0].uri.fsPath), 'company.zap');
         assert.strictEqual(definitions[0].range.start.line, 17, 'Definition should be at line 18 (0-indexed)');
         assert.strictEqual(definitions[0].range.start.character, 2, 'Definition should start at character 3');
     });

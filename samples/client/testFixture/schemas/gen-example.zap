@@ -5,7 +5,7 @@
 
 @0xb4f2917cd520da89;
 
-using Common = import "/common.capnp";
+using Common = import "/common.zap";
 
 struct Map(Key, Value) {
   entries @0 :List(Entry);
@@ -30,5 +30,5 @@ struct Thing {
 struct Person {
   id @0 :UInt32;
   job @1 :Common.JobType;
-#  job2 @2 :import "/common.capnp".JobType;
+#  job2 @2 :import "/common.zap".JobType;
 }
