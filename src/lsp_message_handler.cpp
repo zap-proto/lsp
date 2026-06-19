@@ -165,7 +165,7 @@ kj::Maybe<kj::String> LspMessageHandler::buildResponseString(
 
 kj::Promise<void> LspMessageHandler::compileCapnpFile(kj::StringPtr uri) {
   auto strippedUri = uriToPath(uri);
-  if (strippedUri.endsWith(".capnp")) {
+  if (strippedUri.endsWith(".zap") || strippedUri.endsWith(".capnp")) {
     return compilationManager
         ->compile(CompilationManager::CompileParams{
             .compilerPath = compilerPath,

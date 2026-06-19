@@ -5,7 +5,7 @@
 
 @0x97d4012a9e8bb0cb;
 
-using Common = import "/common.capnp";
+using Common = import "/common.zap";
 
 const myCompanyId :UInt3 = 123;
 
@@ -17,7 +17,7 @@ interface EmployeeManagement {
     name @0 :Text;
     age @1 :UInt32;
     job @2 :Common.JobTyp;
-    job2 @3 :import "/common.capnp".JobType;
+    job2 @3 :import "/common.zap".JobType;
     bar @4 :Foo.Bar.Baz;
   }
 }

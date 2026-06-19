@@ -5,7 +5,7 @@
 
 @0xe6bd36f8b8744aef;
 
-using Common = import "/common.capnp";
+using Common = import "/common.zap";
 
 const myCompanyId :UInt32 = 123;
 
@@ -19,7 +19,7 @@ interface EmployeeManagement {
     name @0 :Text;
     age @1 :UInt32;
     job @2 :Common.JobType;
-    job2 @3 :import "/common.capnp".JobType;
+    job2 @3 :import "/common.zap".JobType;
     bar @4 :Foo.Bar.Baz;
     oldField @5 :Text $deprecated("Use newField instead");
     contact :union {

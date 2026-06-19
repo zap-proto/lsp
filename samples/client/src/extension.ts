@@ -31,7 +31,7 @@ export async function activate(context: ExtensionContext) {
     }
     const workspaceFolder = workspaceFolders[0];
 	// Get configuration
-	const config = workspace.getConfiguration('capnp-ls-client');
+	const config = workspace.getConfiguration('zap-ls-client');
 	const serverPathRaw = config.get<string>('languageServer.path');
 	const compilerPathRaw = config.get<string>('compiler.path');
 	const importPathsRaw = config.get<string[]>('compiler.importPaths') || [];
@@ -328,7 +328,7 @@ export async function activate(context: ExtensionContext) {
 	const clientOptions: LanguageClientOptions = {
 		documentSelector: [{ scheme: 'file', language: 'capnp' }],
 		synchronize: {
-			fileEvents: workspace.createFileSystemWatcher('**/*.capnp')
+			fileEvents: workspace.createFileSystemWatcher('**/*.{zap,capnp}')
 		},
 		outputChannel: outputChannel,
 		workspaceFolder: workspaceFolder,
