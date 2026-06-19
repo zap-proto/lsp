@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project("capnp-ls" CXX)
+project("zap-ls" CXX)
 
 # 使用されるコンパイラの情報を表示
 message(STATUS "C++ Compiler: ${CMAKE_CXX_COMPILER}")
@@ -8,7 +8,7 @@ message(STATUS "C++ Compiler version: ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "C++ flags: ${CMAKE_CXX_FLAGS}")
 
 set(CMAKE_CXX_STANDARD 17)
-set(exe_name capnp-ls)
+set(exe_name zap-ls)
 
 option(USE_BUNDLED_CAPNP_TOOL "Use bundled (self-built) Cap'n Proto tool and library" OFF)
 

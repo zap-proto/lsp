@@ -1,10 +1,10 @@
 {
-    "zap-ls-client.compiler.path": "capnp",
+    "zap-ls-client.compiler.path": "zap",
     "zap-ls-client.compiler.importPaths": [
         "schemas/common",
         "schemas/common2"
     ],
-    "zap-ls-client.languageServer.path": "../build/capnp-ls", // Relative path for development. When using a published extension, specify an absolute path.
+    "zap-ls-client.languageServer.path": "../build/zap-ls", // Relative path for development. When using a published extension, specify an absolute path.
     "zap-ls-client.server.extraEnv": {
         "CPP_LOG": "lsp_server=info"
     }

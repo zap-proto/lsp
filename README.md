@@ -1,4 +1,4 @@
-# Cap'n Proto Language Server
+# ZAP Language Server
 
 > **Docs:** [ZAP Language Server](https://zap-proto.dev/docs/sdks) · part of the [ZAP Protocol](https://zap-proto.io)
 
@@ -41,7 +41,7 @@ With this option, the `compilerPath` in the initialization options becomes optio
 
 This automatically downloads and installs Cap'n Proto, which is guaranteed to be compatible with the language server.
 
-The executable for the language server is located at `build/capnp-ls` in both cases.
+The executable for the language server is located at `build/zap-ls` in both cases.
 
 ## Language Server Protocol Support
 

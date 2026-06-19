@@ -1,4 +1,4 @@
-name: CI - Build LSP Server with Cap'n Proto
+name: CI - Build ZAP LSP Server (on Cap'n Proto)
 
 on:
   push:
@@ -53,12 +53,12 @@ jobs:
       - name: Build Project
         run: cmake --build build
       - name: Rename Binary for Linux x86_64
-        run: mv build/capnp-ls build/capnp-ls-linux-x86_64
+        run: mv build/zap-ls build/zap-ls-linux-x86_64
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: capnp-ls-linux-x86_64
-          path: build/capnp-ls-linux-x86_64
+          name: zap-ls-linux-x86_64
+          path: build/zap-ls-linux-x86_64
 
   release:
     name: Create GitHub Release
@@ -72,16 +72,16 @@ jobs:
       - name: Download Linux x86_64 Artifact
         uses: actions/download-artifact@v4
         with:
-          name: capnp-ls-linux-x86_64
+          name: zap-ls-linux-x86_64
           path: artifacts
 
       - name: Grant Execute Permission
-        run: chmod +x artifacts/capnp-ls-linux-x86_64
+        run: chmod +x artifacts/zap-ls-linux-x86_64
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            artifacts/capnp-ls-linux-x86_64
+            artifacts/zap-ls-linux-x86_64
           draft: false
           prerelease: false

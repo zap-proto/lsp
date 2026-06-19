@@ -113,7 +113,7 @@ CompilationManager::checkCapnpVersionCompatible(kj::StringPtr compilerPath) {
           std::string outputStr(result.textOutput.cStr());
           KJ_LOG(INFO, "Version output:", outputStr);
 
-          std::regex versionRegex(R"(Cap'n Proto version (\d+)\.(\d+)(?:\.\d+)?(?:-[a-zA-Z0-9]+)?)");
+          std::regex versionRegex(R"((?:Zap|Cap'n Proto) version (\d+)\.(\d+)(?:\.\d+)?(?:-[a-zA-Z0-9]+)?)");
           std::smatch matches;
 
           if (!std::regex_search(outputStr, matches, versionRegex)) {
@@ -176,19 +176,19 @@ kj::Maybe<kj::String> CompilationManager::buildCommand(CompileParams params) {
   kj::String compilerPath;
   if (params.compilerPath != nullptr && params.compilerPath.size() > 0) {
     compilerPath = kj::heapString(params.compilerPath);
-    KJ_LOG(INFO, "Using user-specified capnp compiler", compilerPath);
+    KJ_LOG(INFO, "Using user-specified zap compiler", compilerPath);
   } else {
 #ifdef BUNDLED_CAPNP_EXECUTABLE
     compilerPath = kj::heapString(BUNDLED_CAPNP_EXECUTABLE);
-    KJ_LOG(INFO, "Using bundled capnp compiler", compilerPath);
+    KJ_LOG(INFO, "Using bundled zap compiler", compilerPath);
 #else
-    compilerPath = kj::heapString("capnp");
-    KJ_LOG(INFO, "Using default capnp command", compilerPath);
+    compilerPath = kj::heapString("zap");
+    KJ_LOG(INFO, "Using default zap command", compilerPath);
 #endif
   }
 
-  if (!compilerPath.endsWith("capnp")) {
-    KJ_LOG(ERROR, "Compiler path must end with 'capnp'");
+  if (!compilerPath.endsWith("zap") && !compilerPath.endsWith("capnp")) {
+    KJ_LOG(ERROR, "Compiler path must end with 'zap' or 'capnp'");
     return nullptr;
   }
   args.add(kj::mv(compilerPath));
