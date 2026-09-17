@@ -82,11 +82,11 @@
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -b",
-		"watch": "tsc -b -w",
+		"compile": "node_modules/tsgo/bin/tsc -b",
+		"watch": "node_modules/tsgo/bin/tsc -b -w",
 		"lint": "eslint ./client/src  --ext .ts,.tsx",
 		"postinstall": "cd client && npm install && cd ..",
-		"test": "tsc -b && sh ./scripts/e2e.sh"
+		"test": "node_modules/tsgo/bin/tsc -b && sh ./scripts/e2e.sh"
 	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.6",
@@ -95,7 +95,8 @@
 		"@typescript-eslint/parser": "^7.1.0",
 		"eslint": "^8.57.0",
 		"mocha": "^10.3.0",
-		"typescript": "^5.3.3"
+		"tsgo": "npm:typescript@7.0.2",
+		"typescript": "6.0.3"
 	},
 	"dependencies": {
 		"vscode-uri": "^3.0.8"
